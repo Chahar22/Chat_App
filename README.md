@@ -17,12 +17,6 @@ WhatsApp
 
 ## Run Locally
 
-Clone the project
-
-```bash
-
-```
-
 Go to the project directory
 
 ```bash
