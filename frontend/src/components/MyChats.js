@@ -46,7 +46,7 @@ const MyChats = ({ fetchAgain }) => {
     // eslint-disable-next-line
   }, [fetchAgain]);
 
-    const boxStyles = {
+  const boxStyles = {
     backgroundImage: `url(${backgroundImageUrl})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
@@ -75,28 +75,36 @@ const MyChats = ({ fetchAgain }) => {
         w="100%"
         justifyContent="space-between"
         alignItems="center"
-
       >
-        <Text fontSize="2xl" fontFamily="Monaco"  color="white"> My Chats</Text>
-        <GroupChatModal>
-          <Button
-            d="flex"
-            fontSize={{ base: "17px", md: "10px", lg: "17px" }}
-            rightIcon={<AddIcon />}
-          >
-            New Group Chat
-          </Button>
-        </GroupChatModal>
+        <Text fontSize="2xl" fontFamily="Monaco" color="white">
+          {" "}
+          Chats
+        </Text>
+        <Box>
+          <GroupChatModal>
+            <Button
+              d="flex"
+              fontSize={{ base: "17px", md: "10px", lg: "17px" }}
+              rightIcon={<AddIcon />}
+            >
+              Create Group
+            </Button>
+          </GroupChatModal>
+        </Box>
       </Box>
       <Box
         d="flex"
         flexDir="column"
         p={3}
-        bg="#F8F8F8"
+        // bg="#F8F8F8"
+        bg="teal.400"
         w="100%"
         h="100%"
         borderRadius="lg"
         overflowY="hidden"
+        // bgImage={`url(${backgroundImageUrl})`}
+        // // bgSize="cover"
+        // bgPos="center"
       >
         {chats ? (
           <Stack overflowY="scroll">
@@ -104,8 +112,9 @@ const MyChats = ({ fetchAgain }) => {
               <Box
                 onClick={() => setSelectedChat(chat)}
                 cursor="pointer"
-                bg={selectedChat === chat ? "#38B2AC" : "#E8E8E8"}
-                color={selectedChat === chat ? "white" : "black"}
+                //38B2AC
+                bg={selectedChat === chat ? "white" : "teal.400"}
+                color={selectedChat === chat ? "black" : "white"}
                 px={3}
                 py={2}
                 borderRadius="lg"

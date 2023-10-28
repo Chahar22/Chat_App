@@ -122,10 +122,7 @@ function SideDrawer() {
       });
     }
   };
-const boxStyles = {
-    
-    // You can add more background related styles here
-  };
+  const boxStyles = {};
   return (
     <>
       <Box
@@ -139,14 +136,14 @@ const boxStyles = {
         style={boxStyles}
       >
         <Tooltip label="Search Users to chat" hasArrow placement="bottom-end">
-          <Button  color="white" variant="ghost" onClick={onOpen}>
+          <Button color="white" variant="ghost" onClick={onOpen}>
             <i className="fas fa-search"></i>
-            <Text   d={{ base: "none", md: "flex" }} px={4}>
+            <Text d={{ base: "none", md: "flex" }} px={4}>
               Search User
             </Text>
           </Button>
         </Tooltip>
-        <Text fontSize="2xl" fontFamily="Monaco"  color="white">
+        <Text fontSize="2xl" fontFamily="Monaco" color="white">
           WhatsApp
         </Text>
         <div>
@@ -156,7 +153,7 @@ const boxStyles = {
                 count={notification.length}
                 effect={Effect.SCALE}
               />
-              <BellIcon  color="white" fontSize="2xl" m={1} />
+              <BellIcon color="white" fontSize="2xl" m={1} />
             </MenuButton>
             <MenuList pl={2}>
               {!notification.length && "No New Messages"}

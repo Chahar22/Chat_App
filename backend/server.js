@@ -9,6 +9,7 @@ const path = require("path");
 
 dotenv.config();
 connectDB();
+
 const app = express();
 
 app.use(express.json()); // to accept json data
@@ -51,7 +52,7 @@ const server = app.listen(
 );
 
 const io = require("socket.io")(server, {
-  pingTimeout: 60000,
+  pingTimeout: 600,
   cors: {
     origin: "http://localhost:3000",
     // credentials: true,

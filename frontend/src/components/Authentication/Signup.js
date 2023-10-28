@@ -100,9 +100,9 @@ const Signup = () => {
     if (pics.type === "image/jpeg" || pics.type === "image/png") {
       const data = new FormData();
       data.append("file", pics);
-      data.append("upload_preset", "chat-app");
-      data.append("cloud_name", "piyushproj");
-      fetch("https://api.cloudinary.com/v1_1/piyushproj/image/upload", {
+      data.append("upload_preset", "whatsapp_clone");
+      data.append("cloud_name", "dif9dkm59");
+      fetch("https://api.cloudinary.com/v1_1/dif9dkm59/image/upload", {
         method: "post",
         body: data,
       })
@@ -134,6 +134,10 @@ const Signup = () => {
       <FormControl id="first-name" isRequired>
         <FormLabel>Name</FormLabel>
         <Input
+          isInvalid
+          errorBorderColor="teal.300"
+          bg="#F8F8F8"
+          _placeholder={{ opacity: 1, color: "grey" }}
           placeholder="Enter Your Name"
           onChange={(e) => setName(e.target.value)}
         />
@@ -141,6 +145,10 @@ const Signup = () => {
       <FormControl id="email" isRequired>
         <FormLabel>Email Address</FormLabel>
         <Input
+          isInvalid
+          errorBorderColor="teal.300"
+          bg="#F8F8F8"
+          _placeholder={{ opacity: 1, color: "grey" }}
           type="email"
           placeholder="Enter Your Email Address"
           onChange={(e) => setEmail(e.target.value)}
@@ -150,6 +158,10 @@ const Signup = () => {
         <FormLabel>Password</FormLabel>
         <InputGroup size="md">
           <Input
+            isInvalid
+            errorBorderColor="teal.300"
+            bg="#F8F8F8"
+            _placeholder={{ opacity: 1, color: "grey" }}
             type={show ? "text" : "password"}
             placeholder="Enter Password"
             onChange={(e) => setPassword(e.target.value)}
@@ -165,6 +177,10 @@ const Signup = () => {
         <FormLabel>Confirm Password</FormLabel>
         <InputGroup size="md">
           <Input
+            isInvalid
+            errorBorderColor="teal.300"
+            bg="#F8F8F8"
+            _placeholder={{ opacity: 1, color: "grey" }}
             type={show ? "text" : "password"}
             placeholder="Confirm password"
             onChange={(e) => setConfirmpassword(e.target.value)}
@@ -186,7 +202,7 @@ const Signup = () => {
         />
       </FormControl>
       <Button
-        colorScheme="blue"
+        colorScheme="teal"
         width="100%"
         style={{ marginTop: 15 }}
         onClick={submitHandler}

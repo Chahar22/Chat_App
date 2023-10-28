@@ -12,6 +12,8 @@ import ScrollableChat from "./ScrollableChat";
 import Lottie from "react-lottie";
 import animationData from "../animations/typing.json";
 
+import backgroundImageUrl from "../bg3.jpeg";
+
 import io from "socket.io-client";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import { ChatState } from "../Context/ChatProvider";
@@ -171,8 +173,9 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             d="flex"
             justifyContent={{ base: "space-between" }}
             alignItems="center"
+            backgroundColor={"teal"}
+            borderRadius="10px"
           >
-
             <IconButton
               d={{ base: "flex", md: "none" }}
               icon={<ArrowBackIcon />}
@@ -181,14 +184,16 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             {messages &&
               (!selectedChat.isGroupChat ? (
                 <>
-                  {getSender(user, selectedChat.users)}
+                  <Text color={"white"}>
+                    {getSender(user, selectedChat.users)}
+                  </Text>
                   <ProfileModal
                     user={getSenderFull(user, selectedChat.users)}
                   />
                 </>
               ) : (
                 <>
-                  {selectedChat.chatName.toUpperCase()}
+                  <Text color={"white"}>{selectedChat.chatName}</Text>
                   <UpdateGroupChatModal
                     fetchMessages={fetchMessages}
                     fetchAgain={fetchAgain}
@@ -196,18 +201,20 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                   />
                 </>
               ))}
-           
           </Text>
           <Box
             d="flex"
             flexDir="column"
             justifyContent="flex-end"
-            p={3}
+            paddingBottom={1}
+            paddingLeft={1}
+            marginTop={1}
             bg="#E8E8E8"
             w="100%"
             h="100%"
             borderRadius="lg"
             overflowY="hidden"
+            bgImage={`url(${backgroundImageUrl})`}
           >
             {loading ? (
               <Spinner
@@ -235,22 +242,26 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                     options={defaultOptions}
                     // height={50}
                     width={70}
-                    style={{ marginBottom: 15, marginLeft: 0 }}
+                    style={{
+                      marginBottom: 15,
+                      marginLeft: 0,
+                    }}
                   />
                 </div>
               ) : (
                 <></>
               )}
               <Input
-                variant="filled"
-                bg="#E0E0E0"
+                isInvalid
+                errorBorderColor="teal.300"
                 placeholder="Enter a message.."
+                bg="#F8F8F8"
+                _placeholder={{ opacity: 1, color: "grey" }}
                 value={newMessage}
                 onChange={typingHandler}
               />
             </FormControl>
           </Box>
-        
         </>
       ) : (
         // to get socket.io on same page
@@ -260,7 +271,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           </Text>
         </Box>
       )}
-   
     </>
   );
 };

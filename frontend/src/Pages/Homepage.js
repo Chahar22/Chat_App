@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import { useHistory } from "react-router";
 import Login from "../components/Authentication/Login";
 import Signup from "../components/Authentication/Signup";
+import backgroundImageUrl from "../bg3.jpeg";
 
 function Homepage() {
   const history = useHistory();
@@ -28,21 +29,39 @@ function Homepage() {
         d="flex"
         justifyContent="center"
         p={3}
-        bg="#128C7E"
+        bg="teal.50"
         w="100%"
         m="40px 0 15px 0"
         borderRadius="lg"
-        borderWidth="1px"
+        borderWidth="5px"
+        borderColor={"teal.400"}
       >
-        <Text   color="white" fontSize="5xl" fontFamily="Monaco" textShadow="2px 2px 30px rgba(0, 0, 0, 0.5)">
+        {/* bg="#F0F0F0" // Background color for visualization p={3}
+        m="40px 0 15px 0" w="100%" borderRadius={"lg"}
+        borderWidth="5px" borderColor="teal" >
+        <Text fontSize="4xl" color="teal">
+          WhatsApp
+        </Text> */}
+        <Text color="teal" fontSize="5xl">
           WhatsApp
         </Text>
       </Box>
-      <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px">
+      <Box
+        bg="white"
+        w="100%"
+        p={4}
+        borderRadius="lg"
+        borderWidth="1px"
+        bgImage={`url(${backgroundImageUrl})`}
+      >
         <Tabs isFitted variant="soft-rounded">
           <TabList mb="1em">
-            <Tab>Login</Tab>
-            <Tab>Sign Up</Tab>
+            <Tab backgroundColor={"white"} color={"black"}>
+              Login
+            </Tab>
+            <Tab backgroundColor={"white"} color={"black"}>
+              Sign Up
+            </Tab>
           </TabList>
           <TabPanels>
             <TabPanel>

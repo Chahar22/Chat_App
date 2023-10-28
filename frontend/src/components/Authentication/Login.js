@@ -77,7 +77,11 @@ const Login = () => {
         <Input
           value={email}
           type="email"
+          isInvalid
+          errorBorderColor="teal.300"
           placeholder="Enter Your Email Address"
+          bg="#F8F8F8"
+          _placeholder={{ opacity: 1, color: "grey" }}
           onChange={(e) => setEmail(e.target.value)}
         />
       </FormControl>
@@ -85,10 +89,14 @@ const Login = () => {
         <FormLabel>Password</FormLabel>
         <InputGroup size="md">
           <Input
+            isInvalid
+            errorBorderColor="teal.300"
+            placeholder="Enter Your Password"
+            bg="#F8F8F8"
+            _placeholder={{ opacity: 1, color: "grey" }}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             type={show ? "text" : "password"}
-            placeholder="Enter password"
           />
           <InputRightElement width="4.5rem">
             <Button h="1.75rem" size="sm" onClick={handleClick}>
@@ -98,7 +106,7 @@ const Login = () => {
         </InputGroup>
       </FormControl>
       <Button
-        colorScheme="blue"
+        colorScheme="teal"
         width="100%"
         style={{ marginTop: 15 }}
         onClick={submitHandler}
@@ -108,14 +116,14 @@ const Login = () => {
       </Button>
       <Button
         variant="solid"
-        colorScheme="red"
+        colorScheme="teal"
         width="100%"
         onClick={() => {
           setEmail("guest@example.com");
           setPassword("123456");
         }}
       >
-        Get Guest User Credentials
+        Dummy Account
       </Button>
     </VStack>
   );
