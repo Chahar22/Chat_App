@@ -217,12 +217,14 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             bgImage={`url(${backgroundImageUrl})`}
           >
             {loading ? (
-              <Spinner
-                size="xl"
-                w={20}
-                h={20}
-                alignSelf="center"
-                margin="auto"
+              <Lottie
+                options={defaultOptions}
+                height={150}
+                width={150}
+                style={{
+                  marginBottom:150,
+                  // backgroundColor:"green",
+                }}
               />
             ) : (
               <div className="messages">
@@ -237,19 +239,18 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
               mt={3}
             >
               {istyping ? (
-                <div >
+                <div>
                   <Lottie
                     options={defaultOptions}
                     height={27}
                     width={60}
                     style={{
-                      margin:15,
-                      marginBottom:0,
-                      marginLeft:0,
-                      padding:0,
+                      margin: 15,
+                      marginBottom: 0,
+                      marginLeft: 0,
+                      padding: 0,
                       // backgroundColor:"green",
                     }}
-        
                   />
                 </div>
               ) : (
