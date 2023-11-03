@@ -17,7 +17,7 @@ import backgroundImageUrl from "../bg3.jpeg";
 import io from "socket.io-client";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import { ChatState } from "../Context/ChatProvider";
-const ENDPOINT = "https://whatsapp-chat-app-2xdt.onrender.com"; // "https://talk-a-tive.herokuapp.com"; -> After deployment
+const ENDPOINT = "http://localhost:5000"; // "https://talk-a-tive.herokuapp.com"; -> After deployment
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
@@ -237,15 +237,19 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
               mt={3}
             >
               {istyping ? (
-                <div>
+                <div >
                   <Lottie
                     options={defaultOptions}
-                    // height={50}
-                    width={70}
+                    height={27}
+                    width={60}
                     style={{
-                      marginBottom: 15,
-                      marginLeft: 0,
+                      margin:15,
+                      marginBottom:0,
+                      marginLeft:0,
+                      padding:0,
+                      // backgroundColor:"green",
                     }}
+        
                   />
                 </div>
               ) : (
