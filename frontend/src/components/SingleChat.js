@@ -1,12 +1,17 @@
 import { FormControl } from "@chakra-ui/form-control";
-import { Input } from "@chakra-ui/input";
+import {
+  Input,
+  InputGroup,
+  InputLeftElement,
+  InputRightElement,
+} from "@chakra-ui/input";
 import { Box, Text } from "@chakra-ui/layout";
 import "./styles.css";
 import { IconButton, Spinner, useToast } from "@chakra-ui/react";
 import { getSender, getSenderFull } from "../config/ChatLogics";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { ArrowBackIcon } from "@chakra-ui/icons";
+import { ArrowBackIcon, ArrowForwardIcon, SearchIcon } from "@chakra-ui/icons";
 import ProfileModal from "./miscellaneous/ProfileModal";
 import ScrollableChat from "./ScrollableChat";
 import Lottie from "react-lottie";
@@ -18,7 +23,7 @@ import io from "socket.io-client";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import { ChatState } from "../Context/ChatProvider";
 // const ENDPOINT = "http://localhost:5000";
-//When Push 
+//When Push
 const ENDPOINT = "https://whatsapp-chat-app-2xdt.onrender.com/"; // "https://talk-a-tive.herokuapp.com"; -> After deployment
 var socket, selectedChatCompare;
 
@@ -75,7 +80,8 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   };
 
   const sendMessage = async (event) => {
-    if (event.key === "Enter" && newMessage) {
+    console.log(event, ".........");
+    if (event === undefined && newMessage) {
       socket.emit("stop typing", selectedChat._id);
       try {
         const config = {
@@ -224,7 +230,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 height={150}
                 width={150}
                 style={{
-                  marginBottom:150,
+                  marginBottom: 150,
                   // backgroundColor:"green",
                 }}
               />
@@ -258,15 +264,25 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
               ) : (
                 <></>
               )}
-              <Input
-                isInvalid
-                errorBorderColor="teal.300"
-                placeholder="Enter a message.."
-                bg="#F8F8F8"
-                _placeholder={{ opacity: 1, color: "grey" }}
-                value={newMessage}
-                onChange={typingHandler}
-              />
+          
+              <InputGroup size="md">
+                <Input
+                  isInvalid
+                  errorBorderColor="teal.300"
+                  placeholder="Enter a message.."
+                  bg="#F8F8F8"
+                  _placeholder={{ opacity: 1, color: "grey" }}
+                  value={newMessage}
+                  onChange={typingHandler}
+                />
+                <InputRightElement>
+                  <IconButton
+                    size="sm"
+                    icon={<ArrowForwardIcon />}
+                    onClick={() => sendMessage()}
+                  />
+                </InputRightElement>
+              </InputGroup>
             </FormControl>
           </Box>
         </>
